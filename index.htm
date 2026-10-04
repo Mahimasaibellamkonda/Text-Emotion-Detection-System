@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Text Emotion Detection System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Text Emotion Detection System</h1>
+
+        <p class="subtitle">
+            Enter a sentence and detect the emotion expressed in the text.
+        </p>
+
+        <form method="POST">
+
+            <textarea
+                name="text"
+                placeholder="Enter your text here..."
+                required
+            >{{ text }}</textarea>
+
+            <button type="submit">
+                Detect Emotion
+            </button>
+
+        </form>
+
+
+        {% if emotion %}
+
+        <div class="result">
+
+            <h2>Detected Emotion</h2>
+
+            <div class="emotion">
+                {{ emotion }}
+            </div>
+
+            <p class="description">
+                {{ description }}
+            </p>
+
+            <div class="confidence">
+
+                <p>
+                    Confidence:
+                    <strong>{{ confidence }}%</strong>
+                </p>
+
+                <div class="progress-container">
+
+                    <div
+                        class="progress-bar"
+                        style="width: {{ confidence }}%;">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
